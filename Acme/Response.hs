@@ -11,7 +11,7 @@ import Data.ByteString.Char8 () -- instance IsString ByteString
 
 pong :: (ByteString -> IO ()) -> IO ()
 pong send =
-    do send "HTTP/1.1 200 OK\r\nContent-Length: 4\r\n\r\nPONG"
+    do send "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 4\r\n\r\nPONG"
 
 {-
 sendResponse :: Response -> (ByteString -> IO
