@@ -65,30 +65,3 @@ requestLoop secure addr reader writer app =
           do (request, bs') <- parseRequest reader bs secure
              pong writer
              go bs'
-{-
-    runPipe $ reader >+> httpPipe empty >+> writer
-    where
-      httpPipe :: ByteString -> Pipe ByteString ByteString (ResourceT IO) ()
-      httpPipe bs =
-          do (request, bs')  <- parseRequest bs secure
-             response <- appPipe request
-             responsePipe response
---             _remaining <- discardBody request
-             httpPipe bs'
-
-      discardBody :: Request -> Pipe ByteString ByteString (ResourceT IO) ByteString
-      discardBody request = rqBody request >> discard
-
-      appPipe :: Request -> Pipe ByteString ByteString (ResourceT IO) Response
-      appPipe req = lift $ app req
-
-
-hello :: Request -> ResourceT IO Response
-hello req = 
-    do lift $ print (ppRequest req)
-       let res = Response { rsCode = 200
-                          , rsBody = ResponsePipe $ return ()
-                          }
-       lift $ print (ppResponse res)
-       return $ res
--}

@@ -156,9 +156,3 @@ takeLine getChunk bs =
           if unsafeIndex bs (i - 1) /= cr
              then throw Unexpected
              else return $ (unsafeTake (i - 1) bs, unsafeDrop (i + 1) bs)
-{-
-parse :: String -> Pipe ByteString ByteString (ResourceT IO) a -> IO (Maybe a)
-parse str parser =
-    runResourceT $ runPipe $
-        (yield (C.pack str) >> return Nothing) >+> (fmap Just parser) >+> discard
--}
