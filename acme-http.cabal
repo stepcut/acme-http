@@ -17,12 +17,12 @@ Library
                      Acme.Serve
                      Acme.Types
 
-  Build-depends:     base,
-                     bytestring,
-                     extensible-exceptions,
-                     mtl,
-                     network,
-                     pretty
+  Build-depends:     base                   < 5,
+                     bytestring            == 0.9.*,
+                     extensible-exceptions == 0.1.*,
+                     mtl                   == 2.0.*,
+                     network               >= 2.3 && <2.5,
+                     pretty                >= 1.0 && <1.2
 
   GHC-Options: -O2
 
