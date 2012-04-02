@@ -1,5 +1,5 @@
 Name:                acme-http
-Version:             0.2.0
+Version:             0.2.1
 Synopsis:            fastest Haskell PONG server in the world
 Description:         winning the PONG benchmark at all costs
 License:             BSD3
@@ -23,7 +23,6 @@ Library
                      Acme.Types
 
   Build-depends:     base                   < 5,
-                     blaze-builder         == 0.3.*,
                      bytestring            == 0.9.*,
                      extensible-exceptions == 0.1.*,
                      mtl                   == 2.0.*,
