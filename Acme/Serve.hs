@@ -63,5 +63,5 @@ requestLoop secure addr reader writer app =
     where
       go bs =
           do (request, bs') <- parseRequest reader bs secure
-             pong writer
+             sendResponse writer =<< app request
              go bs'

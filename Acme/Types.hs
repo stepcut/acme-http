@@ -87,18 +87,23 @@ ppRequest Request{..} =
 data Response
     = PongResponse               -- ^ return PONG in the request body
     | ByteStringResponse
-      { rsCode  :: !Int
-      , rsBody  :: !ByteString
+      { rsCode    :: !Int
+      , rsHeaders :: ![(ByteString, ByteString)]
+      , rsBody    :: !ByteString
       }
 
 ppResponse :: Response -> Doc
 ppResponse PongResponse = text "PongResponse"
 ppResponse ByteStringResponse{..} =
     text "Response {"  $+$
-      nest 2 (vcat [ field "rsCode"      (text $ show rsCode)
-                   , field "rsBody"      (text $ show rsBody)
+      nest 2 (vcat [ field "rsCode"    (text $ show rsCode)
+                   , field "rsHeaders" (text $ show rsCode)
+                   , field "rsBody"    (text $ show rsBody)
                    ])  $+$
     text "}"
+
+instance Show Response where
+    show = show . ppResponse
 
 ------------------------------------------------------------------------------
 -- Exceptions
