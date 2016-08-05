@@ -13,8 +13,8 @@ Build-type:          Simple
 Cabal-version:       >=1.6
 
 source-repository head
-    type:     darcs
-    location: http://hub.darcs.net/stepcut/acme-http
+    type:     git
+    location: https://github.com/stepcut/acme-http
 
 Library
   Exposed-modules:   Acme.Response
